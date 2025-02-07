@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		273887512D074EA700B740AD /* Courier_iOS in Frameworks */ = {isa = PBXBuildFile; productRef = 273887502D074EA700B740AD /* Courier_iOS */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		271B889D2D074888004CA5AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273887512D074EA700B740AD /* Courier_iOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = "courier-swift-ui";
 			packageProductDependencies = (
+				273887502D074EA700B740AD /* Courier_iOS */,
 			);
 			productName = "courier-swift-ui";
 			productReference = 271B888C2D074886004CA5AD /* courier-swift-ui.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 271B88832D074886004CA5AD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2738874F2D074EA700B740AD /* XCRemoteSwiftPackageReference "courier-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 271B888D2D074886004CA5AD /* Products */;
 			projectDirPath = "";
@@ -558,6 +567,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2738874F2D074EA700B740AD /* XCRemoteSwiftPackageReference "courier-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/trycourier/courier-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		273887502D074EA700B740AD /* Courier_iOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2738874F2D074EA700B740AD /* XCRemoteSwiftPackageReference "courier-ios" */;
+			productName = Courier_iOS;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 271B88842D074886004CA5AD /* Project object */;
 }
