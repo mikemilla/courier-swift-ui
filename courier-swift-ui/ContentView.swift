@@ -10,7 +10,59 @@ import Courier_iOS
 
 struct ContentView: View {
     
-    func getTheme() -> CourierInboxTheme {
+    var body: some View {
+        CourierInboxView(
+            canSwipePages: false,
+            lightTheme: CourierInboxTheme.example(),
+            darkTheme: CourierInboxTheme.example(),
+            didClickInboxMessageAtIndex: { message, index in
+                message.isRead ? message.markAsUnread() : message.markAsRead()
+                print(index, message)
+            },
+            didLongPressInboxMessageAtIndex: { message, index in
+                message.markAsArchived()
+                print(index, message)
+            },
+            didClickInboxActionForMessageAtIndex: { action, message, index in
+                print(action, message, index)
+            }
+        )
+        .onAppear {
+            authenticate()
+        }
+    }
+    
+    func authenticate() {
+        Task {
+            
+            // Example JWT
+            let jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6InVzZXJfaWQ6dXNlcl8xMDkgd3JpdGU6dXNlci10b2tlbnMgaW5ib3g6cmVhZDptZXNzYWdlcyBpbmJveDp3cml0ZTpldmVudHMgcmVhZDpwcmVmZXJlbmNlcyB3cml0ZTpwcmVmZXJlbmNlcyByZWFkOmJyYW5kcyIsInRlbmFudF9zY29wZSI6InB1Ymxpc2hlZC9wcm9kdWN0aW9uIiwidGVuYW50X2lkIjoiNmE1MWJmOGMtYWQyZS00MmJmLWJlNmEtODM4NWI1ZDRhMGY1IiwiaWF0IjoxNzM4OTQ4ODU2LCJleHAiOjE4MjUzNDg4NTYsImp0aSI6ImVkODg1N2Q3LTYzMmQtNDI5OS1iNGUwLTk1ZWVlYWQ0ZjY5NCJ9.ZxHiOxwBuzBI_sMP0pcpcBteZge0grmQ1YHa8ONX3Uo"
+            
+            // Sign the user in
+            await Courier.shared.signIn(userId: "user_109", accessToken: jwt)
+            
+            // Register a listener to watch unread count
+            await Courier.shared.addInboxListener(
+                onUnreadCountChanged: { count in
+                    print(count)
+                }
+            )
+            
+            // Change pagination amount
+            await Courier.shared.setPaginationLimit(5)
+            
+        }
+    }
+    
+}
+
+#Preview {
+    ContentView()
+}
+
+extension CourierInboxTheme {
+    
+    static func example() -> CourierInboxTheme {
         let whiteColor = UIColor.white
         let blackColor = UIColor.black
         let blackLightColor = UIColor.black.withAlphaComponent(0.5)
@@ -51,11 +103,11 @@ struct ContentView: View {
             readingSwipeActionStyle: CourierStyles.Inbox.ReadingSwipeActionStyle(
                 read: CourierStyles.Inbox.SwipeActionStyle(
                     icon: UIImage(systemName: "envelope.open.fill"),
-                    color: primaryColor
+                    color: primaryLightColor
                 ),
                 unread: CourierStyles.Inbox.SwipeActionStyle(
                     icon: UIImage(systemName: "envelope.fill"),
-                    color: primaryLightColor
+                    color: primaryColor
                 )
             ),
             archivingSwipeActionStyle: CourierStyles.Inbox.ArchivingSwipeActionStyle(
@@ -137,40 +189,4 @@ struct ContentView: View {
         )
     }
     
-    var body: some View {
-        CourierInboxView(
-            canSwipePages: false,
-            lightTheme: getTheme(),
-            darkTheme: getTheme(),
-            didClickInboxMessageAtIndex: { message, index in
-                message.isRead ? message.markAsUnread() : message.markAsRead()
-                print(index, message)
-            },
-            didLongPressInboxMessageAtIndex: { message, index in
-                message.markAsArchived()
-                print(index, message)
-            },
-            didClickInboxActionForMessageAtIndex: { action, message, index in
-                print(action, message, index)
-            },
-            didScrollInbox: { scrollView in
-                print(scrollView.contentOffset.y)
-            }
-        )
-        .onAppear {
-            authenticate()
-        }
-    }
-    
-    func authenticate() {
-        Task {
-            let jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6InVzZXJfaWQ6dXNlcl8xMDkgd3JpdGU6dXNlci10b2tlbnMgaW5ib3g6cmVhZDptZXNzYWdlcyBpbmJveDp3cml0ZTpldmVudHMgcmVhZDpwcmVmZXJlbmNlcyB3cml0ZTpwcmVmZXJlbmNlcyByZWFkOmJyYW5kcyIsInRlbmFudF9zY29wZSI6InB1Ymxpc2hlZC9wcm9kdWN0aW9uIiwidGVuYW50X2lkIjoiNmE1MWJmOGMtYWQyZS00MmJmLWJlNmEtODM4NWI1ZDRhMGY1IiwiaWF0IjoxNzM4OTQ4ODU2LCJleHAiOjE4MjUzNDg4NTYsImp0aSI6ImVkODg1N2Q3LTYzMmQtNDI5OS1iNGUwLTk1ZWVlYWQ0ZjY5NCJ9.ZxHiOxwBuzBI_sMP0pcpcBteZge0grmQ1YHa8ONX3Uo"
-            await Courier.shared.signIn(userId: "user_109", accessToken: jwt)
-        }
-    }
-    
-}
-
-#Preview {
-    ContentView()
 }
