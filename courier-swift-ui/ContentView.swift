@@ -13,7 +13,11 @@ struct ContentView: View {
     @State private var isLoading = true
     
     func authenticate() {
+        
         Task {
+            
+            let userId = await Courier.shared.userId
+            print("Current User: \(userId ?? "None")")
             
             // Change pagination amount
             await Courier.shared.setPaginationLimit(5)
@@ -35,6 +39,7 @@ struct ContentView: View {
             isLoading = false
             
         }
+        
     }
     
     var body: some View {
