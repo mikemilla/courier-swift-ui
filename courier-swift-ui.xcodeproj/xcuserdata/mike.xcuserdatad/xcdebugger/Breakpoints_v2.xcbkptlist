@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "097E1C21-C530-475B-93BE-F125EFC628B4"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "21B4EA61-C62D-4D0A-9C1D-8D9930D7D149"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../Library/Developer/Xcode/DerivedData/courier-swift-ui-hebfsyiehkhbvdabozicvuwsqtnw/SourcePackages/checkouts/courier-ios/Sources/Courier_iOS/Models/CourierInboxData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "readAllMessages(client:handler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "21B4EA61-C62D-4D0A-9C1D-8D9930D7D149 - 5cb05d57c833f858"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Courier_iOS.CourierInboxData.readAllMessages(client: Swift.Optional&lt;Courier_iOS.CourierClient&gt;, handler: Courier_iOS.InboxMutationHandler) async throws -&gt; ()"
+                  moduleName = "courier-swift-ui.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mike/Library/Developer/Xcode/DerivedData/courier-swift-ui-hebfsyiehkhbvdabozicvuwsqtnw/SourcePackages/checkouts/courier-ios/Sources/Courier_iOS/Models/CourierInboxData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74">
+               </Location>
+               <Location
+                  uuid = "21B4EA61-C62D-4D0A-9C1D-8D9930D7D149 - 5cb05d57c833f858"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Courier_iOS.CourierInboxData.readAllMessages(client: Swift.Optional&lt;Courier_iOS.CourierClient&gt;, handler: Courier_iOS.InboxMutationHandler) async throws -&gt; ()"
+                  moduleName = "courier-swift-ui.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mike/Library/Developer/Xcode/DerivedData/courier-swift-ui-hebfsyiehkhbvdabozicvuwsqtnw/SourcePackages/checkouts/courier-ios/Sources/Courier_iOS/Models/CourierInboxData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EB26C32-7FF2-4350-8845-A84A794A3579"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../Library/Developer/Xcode/DerivedData/courier-swift-ui-hebfsyiehkhbvdabozicvuwsqtnw/SourcePackages/checkouts/courier-ios/Sources/Courier_iOS/Models/CourierInboxData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "updateMessage(messageId:event:client:handler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6EB26C32-7FF2-4350-8845-A84A794A3579 - 5c986a377134f74"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Courier_iOS.CourierInboxData.updateMessage(messageId: Swift.String, event: Courier_iOS.InboxEventType, client: Swift.Optional&lt;Courier_iOS.CourierClient&gt;, handler: Courier_iOS.InboxMutationHandler) async throws -&gt; ()"
+                  moduleName = "courier-swift-ui.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mike/Library/Developer/Xcode/DerivedData/courier-swift-ui-hebfsyiehkhbvdabozicvuwsqtnw/SourcePackages/checkouts/courier-ios/Sources/Courier_iOS/Models/CourierInboxData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96">
+               </Location>
+               <Location
+                  uuid = "6EB26C32-7FF2-4350-8845-A84A794A3579 - 5c986a377134f74"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Courier_iOS.CourierInboxData.updateMessage(messageId: Swift.String, event: Courier_iOS.InboxEventType, client: Swift.Optional&lt;Courier_iOS.CourierClient&gt;, handler: Courier_iOS.InboxMutationHandler) async throws -&gt; ()"
+                  moduleName = "courier-swift-ui.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mike/Library/Developer/Xcode/DerivedData/courier-swift-ui-hebfsyiehkhbvdabozicvuwsqtnw/SourcePackages/checkouts/courier-ios/Sources/Courier_iOS/Models/CourierInboxData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -573,8 +573,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/trycourier/courier-ios";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.6.1;
+				branch = "bug/concurrency-feb7";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -10,48 +10,64 @@ import Courier_iOS
 
 struct ContentView: View {
     
-    var body: some View {
-        CourierInboxView(
-            canSwipePages: false,
-            lightTheme: CourierInboxTheme.example(),
-            darkTheme: CourierInboxTheme.example(),
-            didClickInboxMessageAtIndex: { message, index in
-                message.isRead ? message.markAsUnread() : message.markAsRead()
-                print(index, message)
-            },
-            didLongPressInboxMessageAtIndex: { message, index in
-                message.markAsArchived()
-                print(index, message)
-            },
-            didClickInboxActionForMessageAtIndex: { action, message, index in
-                print(action, message, index)
-            }
-        )
-        .onAppear {
-            authenticate()
-        }
-    }
+    @State private var isLoading = true
     
     func authenticate() {
         Task {
+            // Change pagination amount
+            await Courier.shared.setPaginationLimit(5)
             
             // Example JWT
             let jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6InVzZXJfaWQ6dXNlcl8xMDkgd3JpdGU6dXNlci10b2tlbnMgaW5ib3g6cmVhZDptZXNzYWdlcyBpbmJveDp3cml0ZTpldmVudHMgcmVhZDpwcmVmZXJlbmNlcyB3cml0ZTpwcmVmZXJlbmNlcyByZWFkOmJyYW5kcyIsInRlbmFudF9zY29wZSI6InB1Ymxpc2hlZC9wcm9kdWN0aW9uIiwidGVuYW50X2lkIjoiNmE1MWJmOGMtYWQyZS00MmJmLWJlNmEtODM4NWI1ZDRhMGY1IiwiaWF0IjoxNzM4OTQ4ODU2LCJleHAiOjE4MjUzNDg4NTYsImp0aSI6ImVkODg1N2Q3LTYzMmQtNDI5OS1iNGUwLTk1ZWVlYWQ0ZjY5NCJ9.ZxHiOxwBuzBI_sMP0pcpcBteZge0grmQ1YHa8ONX3Uo"
             
             // Sign the user in
-            await Courier.shared.signIn(userId: "user_109", accessToken: jwt)
+            await Courier.shared.signIn(userId: "user_109", accessToken: jwt, showLogs: false)
             
             // Register a listener to watch unread count
             await Courier.shared.addInboxListener(
                 onUnreadCountChanged: { count in
-                    print(count)
+                    print("Unread count: \(count)")
                 }
             )
             
-            // Change pagination amount
-            await Courier.shared.setPaginationLimit(5)
-            
+            // Update state
+            isLoading = false
         }
+    }
+    
+    var body: some View {
+        Group {
+            if isLoading {
+                VStack {
+                    ProgressView("Authenticating...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .padding()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                CourierInboxView(
+                    lightTheme: CourierInboxTheme.example,
+                    darkTheme: CourierInboxTheme.example,
+                    didClickInboxMessageAtIndex: { message, index in
+                        message.isRead ? message.markAsUnread() : message.markAsRead()
+                        print(index, message)
+                    },
+                    didLongPressInboxMessageAtIndex: { message, index in
+                        message.markAsArchived()
+                        print(index, message)
+                    },
+                    didClickInboxActionForMessageAtIndex: { action, message, index in
+                        print(action, message, index)
+                    }
+                )
+            }
+        }
+        .onAppear {
+            if isLoading {
+                authenticate()
+            }
+        }
+        .animation(.easeInOut, value: isLoading)
     }
     
 }
@@ -62,7 +78,7 @@ struct ContentView: View {
 
 extension CourierInboxTheme {
     
-    static func example() -> CourierInboxTheme {
+    static var example: CourierInboxTheme {
         let whiteColor = UIColor.white
         let blackColor = UIColor.black
         let blackLightColor = UIColor.black.withAlphaComponent(0.5)
