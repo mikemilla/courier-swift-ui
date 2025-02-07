@@ -14,6 +14,7 @@ struct ContentView: View {
     
     func authenticate() {
         Task {
+            
             // Change pagination amount
             await Courier.shared.setPaginationLimit(5)
             
@@ -32,6 +33,7 @@ struct ContentView: View {
             
             // Update state
             isLoading = false
+            
         }
     }
     
